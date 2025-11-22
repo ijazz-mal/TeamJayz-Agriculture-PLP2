@@ -30,12 +30,12 @@ def populate_markets(db):
         ('Gikondo Market', 'Gikondo Industrial Zone')
     ]
     
-    print("\n📍 Populating Markets...")
+    print("\n Populating Markets...")
     for market_name, location in markets:
         query = "INSERT IGNORE INTO markets (market_name, location) VALUES (%s, %s)"
         db.execute_query(query, (market_name, location))
     
-    print(f"   ✅ Added {len(markets)} markets")
+    print(f"   Added {len(markets)} markets")
 
 
 def populate_products(db):
@@ -93,12 +93,12 @@ def populate_products(db):
         ('Soybeans', 'Legumes', 'kg'),
     ]
     
-    print("\n🌾 Populating Products...")
+    print("\n Populating Products...")
     for product_name, category, unit in products:
         query = "INSERT IGNORE INTO products (product_name, category, unit) VALUES (%s, %s, %s)"
         db.execute_query(query, (product_name, category, unit))
     
-    print(f"   ✅ Added {len(products)} products")
+    print(f"   Added {len(products)} products")
 
 
 def populate_users(db, auth, user_manager):
@@ -123,7 +123,7 @@ def populate_users(db, auth, user_manager):
         ('customer5', 'customer123', 'customer', 'Linda Iradukunda', 'linda@email.rw'),
     ]
     
-    print("\n👥 Populating Users...")
+    print("\n Populating Users...")
     created_count = 0
     for username, password, role, full_name, email in users:
         # Check if user exists
@@ -147,19 +147,19 @@ def populate_users(db, auth, user_manager):
             
             created_count += 1
     
-    print(f"   ✅ Added {created_count} users")
+    print(f"   Added {created_count} users")
 
 
 def populate_prices(db):
     """Generate realistic price history for the past 90 days"""
-    print("\n💰 Populating Price History (this may take a moment)...")
+    print("\n Populating Price History (this may take a moment)...")
     
     # Get all products and markets
     products = db.execute_query("SELECT product_id, product_name, category FROM products", fetch=True)
     markets = db.execute_query("SELECT market_id, market_name FROM markets", fetch=True)
     
     if not products or not markets:
-        print("   ⚠️  No products or markets found!")
+        print("    No products or markets found!")
         return
     
     # Base prices for products (in RWF)
@@ -198,7 +198,7 @@ def populate_prices(db):
             # Show progress every 20%
             if processed % max(1, total_combinations // 5) == 0:
                 progress = (processed / total_combinations) * 100
-                print(f"   ⏳ Progress: {progress:.0f}% ({processed}/{total_combinations})")
+                print(f"   Progress: {progress:.0f}% ({processed}/{total_combinations})")
             
             # Market-specific price variation (some markets are more expensive)
             market_multiplier = random.uniform(0.9, 1.15)
@@ -257,12 +257,12 @@ def populate_prices(db):
         for data in batch_data:
             db.execute_query(query, data)
     
-    print(f"   ✅ Added {price_count} price records across 90 days")
+    print(f"   Added {price_count} price records across 90 days")
 
 
 def populate_orders(db):
     """Generate sample orders for testing"""
-    print("\n🛒 Populating Orders...")
+    print("\n Populating Orders...")
     
     # Get customers and products
     customers = db.execute_query(
@@ -271,7 +271,7 @@ def populate_orders(db):
     )
     
     if not customers:
-        print("   ⚠️  No active customers found!")
+        print("     No active customers found!")
         return
     
     products = db.execute_query(
@@ -280,7 +280,7 @@ def populate_orders(db):
     )
     
     if not products:
-        print("   ⚠️  No products found!")
+        print("     No products found!")
         return
     
     order_count = 0
@@ -371,22 +371,22 @@ def populate_orders(db):
         db.execute_query(update_query, (total_amount, order_id))
         order_count += 1
     
-    print(f"   ✅ Added {order_count} orders with {item_count} items")
+    print(f"   Added {order_count} orders with {item_count} items")
 
 
 def main():
     """Main function to populate all test data"""
     print("=" * 60)
-    print("🌾 MARKET PRICE TRACKER - TEST DATA POPULATION")
+    print(" MARKET PRICE TRACKER - TEST DATA POPULATION")
     print("=" * 60)
     
     # Connect to database
     db = Database()
     if not db.connect():
-        print("\n❌ Failed to connect to database!")
+        print("\n Failed to connect to database!")
         return
     
-    print("\n✅ Connected to database")
+    print("\n Connected to database")
     
     # Initialize authentication
     auth = AuthManager(db)
@@ -401,10 +401,10 @@ def main():
         populate_orders(db)
         
         print("\n" + "=" * 60)
-        print("✅ TEST DATA POPULATION COMPLETE!")
+        print(" TEST DATA POPULATION COMPLETE!")
         print("=" * 60)
         
-        print("\n📊 Summary:")
+        print("\n Summary:")
         
         # Get counts
         market_count = db.execute_query("SELECT COUNT(*) as count FROM markets", fetch=True)[0]['count']
@@ -419,16 +419,16 @@ def main():
         print(f"   • Price Records: {price_count}")
         print(f"   • Orders: {order_count}")
         
-        print("\n👤 Test Login Credentials:")
+        print("\n Test Login Credentials:")
         print("   Super Admin: admin / admin123")
         print("   Seller: seller1 / seller123")
         print("   Customer: customer1 / customer123")
         
-        print("\n🚀 You can now test analytics and reporting features!")
+        print("\n You can now test analytics and reporting features!")
         print("=" * 60)
         
     except Exception as e:
-        print(f"\n❌ Error populating data: {e}")
+        print(f"\n Error populating data: {e}")
         import traceback
         traceback.print_exc()
     

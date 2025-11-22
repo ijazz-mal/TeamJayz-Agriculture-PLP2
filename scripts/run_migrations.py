@@ -63,25 +63,25 @@ def run_migration(db, migration_file):
                 db.execute_query(statement)
                 # Only show first 80 chars
                 preview = statement[:80].replace('\n', ' ')
-                print(f"  ✓ Statement {i}: {preview}...")
+                print(f"   Statement {i}: {preview}...")
                 success_count += 1
             except Exception as e:
                 error_msg = str(e)
                 # Ignore "Duplicate column" errors as they mean it already exists
                 if 'Duplicate column' in error_msg or 'already exists' in error_msg:
-                    print(f"  ⚠ Statement {i}: Already exists, skipping")
+                    print(f"   Statement {i}: Already exists, skipping")
                     success_count += 1
                 else:
                     preview = statement[:80].replace('\n', ' ')
-                    print(f"  ✗ Error in statement {i}: {error_msg}")
+                    print(f"   Error in statement {i}: {error_msg}")
                     print(f"     Statement: {preview}...")
                     # Don't return False, continue with other statements
         
-        print(f"✓ Migration completed: {success_count}/{len(statements)} statements\n")
+        print(f" Migration completed: {success_count}/{len(statements)} statements\n")
         return True
         
     except Exception as e:
-        print(f"✗ Error reading migration file: {e}\n")
+        print(f" Error reading migration file: {e}\n")
         return False
 
 
@@ -97,11 +97,11 @@ def main():
     db = Database()
     
     if not db.connect():
-        print("✗ Failed to connect to database")
+        print(" Failed to connect to database")
         print("Please check your configuration in config.ini")
         return
     
-    print("✓ Connected to database successfully\n")
+    print(" Connected to database successfully\n")
     
     # Get migration files
     migrations_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'migrations')
@@ -129,7 +129,7 @@ def main():
     print("=" * 60)
     
     db.disconnect()
-    print("\n✓ Database connection closed")
+    print("\n Database connection closed")
 
 
 if __name__ == "__main__":

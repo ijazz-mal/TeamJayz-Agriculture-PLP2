@@ -1,6 +1,6 @@
 # Developer Quick Reference
 
-## 🔐 Authentication API
+## Authentication API
 
 ```python
 from src.auth import AuthManager
@@ -40,7 +40,7 @@ if auth.is_customer():
 auth.logout()
 ```
 
-## 👥 User Management API (Admin Only)
+## User Management API (Admin Only)
 
 ```python
 from src.user_manager import UserManager
@@ -86,7 +86,7 @@ print(f"Active sellers: {stats['sellers']}")
 results = user_mgr.search_users("john")
 ```
 
-## 🛒 Order Management API
+## Order Management API
 
 ```python
 from src.order_manager import OrderManager
@@ -138,7 +138,7 @@ print(f"Total orders: {stats['total_orders']}")
 print(f"Total revenue: {stats['total_revenue']}")
 ```
 
-## 📊 Analytics API
+## Analytics API
 
 ```python
 from src.analytics import Analytics
@@ -188,7 +188,7 @@ forecast = analytics.get_price_forecast_data(product_id=1, market_id=2)
 report = analytics.generate_market_report(market_id=1, days=30)
 ```
 
-## 📄 Export & Reporting API
+## Export & Reporting API
 
 ```python
 from src.export import ReportExporter
@@ -247,9 +247,10 @@ filepath, msg = exporter.generate_market_analytics_pdf(
 )
 ```
 
-## 🗃️ Database Models
+## Database Models
 
 ### User Model
+
 ```python
 from src.models import User
 
@@ -272,6 +273,7 @@ user_dict = user.to_dict()
 ```
 
 ### Market Model (Enhanced)
+
 ```python
 from src.models import Market
 
@@ -287,6 +289,7 @@ market = Market(
 ```
 
 ### Product Model (Enhanced)
+
 ```python
 from src.models import Product
 
@@ -304,6 +307,7 @@ product = Product(
 ```
 
 ### Order Model
+
 ```python
 from src.models import Order
 
@@ -324,6 +328,7 @@ order = Order(
 ```
 
 ### OrderItem Model
+
 ```python
 from src.models import OrderItem
 
@@ -339,25 +344,28 @@ item = OrderItem(
 )
 ```
 
-## 🔍 Common Queries
+## Common Queries
 
 ### Get seller's market
+
 ```python
 market_query = "SELECT * FROM markets WHERE user_id = %s"
 result = db.execute_query(market_query, (seller_id,), fetch=True)
 ```
 
 ### Get products by seller
+
 ```python
 product_query = "SELECT * FROM products WHERE user_id = %s"
 products = db.execute_query(product_query, (seller_id,), fetch=True)
 ```
 
 ### Get customer order history
+
 ```python
 order_query = """
-SELECT o.*, m.market_name 
-FROM orders o 
+SELECT o.*, m.market_name
+FROM orders o
 JOIN markets m ON o.market_id = m.market_id
 WHERE o.customer_id = %s
 ORDER BY o.created_at DESC
@@ -365,7 +373,7 @@ ORDER BY o.created_at DESC
 orders = db.execute_query(order_query, (customer_id,), fetch=True)
 ```
 
-## 🛡️ Permission Checks
+## Permission Checks
 
 ```python
 # Check if user can edit product
@@ -390,7 +398,7 @@ def can_view_order(user, order):
     return False
 ```
 
-## 📝 Best Practices
+## Best Practices
 
 1. **Always check authentication** before operations
 2. **Validate user permissions** for sensitive actions
@@ -403,9 +411,10 @@ def can_view_order(user, order):
 9. **Cache analytics results** for performance
 10. **Test with all user roles** before deployment
 
-## 🔄 Workflow Examples
+## Workflow Examples
 
 ### Seller Registration Flow
+
 ```python
 # 1. Customer registers as seller
 auth.register_user(..., role='seller')  # Status: pending
@@ -421,6 +430,7 @@ user_mgr.approve_seller(user_id)  # Status: active
 ```
 
 ### Order Processing Flow
+
 ```python
 # 1. Customer creates order
 order_mgr.create_order(...)  # Status: pending

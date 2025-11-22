@@ -3,9 +3,9 @@
 # Market Price Tracker - Complete Launcher
 # Handles: environment setup, dependencies, and app launch
 
-echo "╔══════════════════════════════════════════════════════════════════════╗"
-echo "║          Market Price Tracker - Smart Launch System                 ║"
-echo "╚══════════════════════════════════════════════════════════════════════╝"
+echo "══════════════════════════════════════════════════════════════════════"
+echo "          Market Price Tracker - Smart Launch System                  "
+echo "══════════════════════════════════════════════════════════════════════"
 echo ""
 
 # Run the Python launcher that handles everything

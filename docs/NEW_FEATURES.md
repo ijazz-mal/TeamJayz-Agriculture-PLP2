@@ -1,19 +1,21 @@
 # New Features Guide - Market Price Tracker
 
-## 🎯 Overview
+## Overview
 
 The Market Price Tracker has been enhanced with authentication, role-based access control, order management, and advanced analytics features.
 
-## 🚀 New Features
+## New Features
 
 ### 1. **Authentication & Authorization System**
 
 #### User Roles
+
 - **Super Admin**: Full system access and user management
 - **Seller/Market Owner**: Manage own market and products
 - **Customer**: Browse, compare prices, and place orders
 
 #### Features
+
 - Secure password hashing with bcrypt
 - Session management
 - Role-based access control
@@ -22,12 +24,14 @@ The Market Price Tracker has been enhanced with authentication, role-based acces
 ### 2. **Order Management System**
 
 Customers can now place orders for products:
+
 - Add items to cart
 - Place orders with delivery details
 - Track order status
 - View order history
 
 Sellers can:
+
 - View orders for their market
 - Update order status
 - Manage order fulfillment
@@ -35,6 +39,7 @@ Sellers can:
 ### 3. **Advanced Analytics**
 
 Comprehensive price analysis tools:
+
 - **Price Trends**: Track price changes over time
 - **Market Comparison**: Compare prices across different markets
 - **Statistical Analysis**: Min, max, average, standard deviation
@@ -45,12 +50,13 @@ Comprehensive price analysis tools:
 ### 4. **Export & Reporting**
 
 Generate professional reports with visualizations:
+
 - **PDF Reports**: Comprehensive reports with charts and statistics
 - **Excel Export**: Data exports for further analysis
 - **CSV Export**: Raw data exports
 - **Charts**: Line charts for trends, bar charts for comparisons
 
-## 📋 Installation
+## Installation
 
 ### 1. Install New Dependencies
 
@@ -59,6 +65,7 @@ pip install -r requirements.txt
 ```
 
 Required packages:
+
 - `bcrypt`: Password hashing
 - `pandas`: Data manipulation
 - `matplotlib`: Chart generation
@@ -74,6 +81,7 @@ python scripts/run_migrations.py
 ```
 
 This will:
+
 - Create users table
 - Create sessions table
 - Add user relationships to markets and products
@@ -84,25 +92,29 @@ This will:
 ### 3. Default Admin Account
 
 After migration, a default super admin account is created:
+
 - **Username**: `admin`
 - **Password**: `admin123`
 
-⚠️ **IMPORTANT**: Change this password immediately after first login!
+**IMPORTANT**: Change this password immediately after first login!
 
-## 🔐 User Management
+## User Management
 
 ### Registration
 
-**Customers**: 
+**Customers**:
+
 - Can register directly and start using the system immediately
 - Status: `active` upon registration
 
 **Sellers**:
+
 - Register but require super admin approval
 - Status: `pending` until approved
 - Can create and manage their own market after approval
 
 **Super Admin**:
+
 - Created manually or through migration
 - Can create other admin accounts
 
@@ -113,7 +125,7 @@ After migration, a default super admin account is created:
 - `suspended`: Account suspended by admin
 - `deleted`: Soft deleted account
 
-## 📊 Using Analytics
+## Using Analytics
 
 ### Price Trend Analysis
 
@@ -150,7 +162,7 @@ comparison = analytics.get_market_price_comparison(product_id=1)
 volatile = analytics.get_most_volatile_products(limit=10, days=30)
 ```
 
-## 📄 Generating Reports
+## Generating Reports
 
 ### PDF Report with Charts
 
@@ -194,7 +206,7 @@ filepath, message = exporter.export_to_csv(
 )
 ```
 
-## 🛒 Order Management
+## Order Management
 
 ### Creating an Order (Customer)
 
@@ -241,7 +253,7 @@ pending → confirmed → processing → ready → completed
               cancelled
 ```
 
-## 👥 User Management (Super Admin)
+## User Management (Super Admin)
 
 ```python
 from src.user_manager import UserManager
@@ -261,7 +273,7 @@ success, msg = user_mgr.suspend_user(user_id=10)
 stats = user_mgr.get_user_statistics()
 ```
 
-## 📁 File Structure
+## File Structure
 
 ```
 market_price_tracker/
@@ -280,7 +292,7 @@ market_price_tracker/
 └── requirements.txt
 ```
 
-## 🔒 Security Best Practices
+## Security Best Practices
 
 1. **Change Default Password**: Immediately change the admin password after first login
 2. **Use Strong Passwords**: Enforce strong password policies
@@ -288,18 +300,19 @@ market_price_tracker/
 4. **Clean Sessions**: Regularly run `auth.clean_expired_sessions()`
 5. **Validate Inputs**: Always validate user inputs before processing
 
-## 📈 Performance Tips
+## Performance Tips
 
 1. **Indexes**: The migration creates indexes on frequently queried fields
 2. **Cache Analytics**: Cache analytics results for frequently viewed reports
 3. **Batch Operations**: Use batch operations for bulk data imports
 4. **Clean Old Data**: Periodically archive old price data
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Migration Issues
 
 If migration fails:
+
 1. Check database connection in `config.ini`
 2. Ensure user has necessary permissions (CREATE, ALTER, INSERT)
 3. Check for existing tables with same names
@@ -308,6 +321,7 @@ If migration fails:
 ### Missing Dependencies
 
 If charts or reports don't generate:
+
 ```bash
 pip install matplotlib pandas reportlab numpy
 ```
@@ -315,11 +329,12 @@ pip install matplotlib pandas reportlab numpy
 ### Permission Errors
 
 If seller cannot access features:
+
 1. Check user status is `active`
 2. Verify market is linked to seller's user_id
 3. Ensure proper role assignment
 
-## 🎓 Next Steps
+## Next Steps
 
 1. **Run the migration**: `python scripts/run_migrations.py`
 2. **Install dependencies**: `pip install -r requirements.txt`
@@ -328,12 +343,13 @@ If seller cannot access features:
 5. **Create test users** for each role
 6. **Explore the new features**!
 
-## 📞 Support
+## Support
 
 For issues or questions:
+
 1. Check the main README.md
 2. Review QUICKSTART.md
 3. Check error logs
 4. Verify configuration in config.ini
 
-## 🎉 Enjoy the new features!
+## Enjoy the new features!

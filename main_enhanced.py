@@ -93,7 +93,7 @@ class EnhancedMarketPriceTracker:
                 
                 except KeyboardInterrupt:
                     print("\n")
-                    AuthUI.print_warning("\n⚠️  Interrupted by user")
+                    AuthUI.print_warning("\n  Interrupted by user")
                     if AuthUI.confirm("Exit application?"):
                         self.exit_application()
                         return
@@ -114,7 +114,7 @@ class EnhancedMarketPriceTracker:
                         
                 except KeyboardInterrupt:
                     print("\n")
-                    AuthUI.print_warning("\n⚠️  Operation interrupted")
+                    AuthUI.print_warning("\n  Operation interrupted")
                     if AuthUI.confirm("Logout and exit?"):
                         self.logout()
                         self.exit_application()
@@ -130,7 +130,7 @@ class EnhancedMarketPriceTracker:
         
         except KeyboardInterrupt:
             print("\n")
-            AuthUI.print_warning("\n⚠️  Application interrupted by user")
+            AuthUI.print_warning("\n  Application interrupted by user")
             self.exit_application()
     
     def login(self):
@@ -1085,7 +1085,7 @@ def main():
         app.run()
     except KeyboardInterrupt:
         print("\n")
-        AuthUI.print_warning("\n⚠️  Application terminated by user")
+        AuthUI.print_warning("\n  Application terminated by user")
         print(f"\n{AuthUI.COLORS['BOLD']}Thank you for using Market Price Tracker!{AuthUI.COLORS['END']}\n")
         sys.exit(0)
     except Exception as e:

@@ -24,14 +24,14 @@ def test_connection():
     try:
         db = Database()
         if db.connect():
-            print("✓ Database connected successfully!")
+            print(" Database connected successfully!")
             db.disconnect()
             return True
         else:
-            print("✗ Failed to connect to database")
+            print(" Failed to connect to database")
             return False
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -51,20 +51,20 @@ def test_auth():
         success, message = auth.login("admin", "admin123")
         
         if success:
-            print("✓ Admin login successful!")
-            print(f"✓ Logged in as: {auth.get_current_user().full_name}")
-            print(f"✓ Role: {auth.get_current_user().role}")
+            print(" Admin login successful!")
+            print(f" Logged in as: {auth.get_current_user().full_name}")
+            print(f" Role: {auth.get_current_user().role}")
             auth.logout()
-            print("✓ Logout successful!")
+            print(" Logout successful!")
             db.disconnect()
             return True
         else:
-            print(f"✗ Login failed: {message}")
+            print(f" Login failed: {message}")
             db.disconnect()
             return False
             
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -84,19 +84,19 @@ def test_user_manager():
         stats = user_mgr.get_user_statistics()
         
         if stats:
-            print(f"✓ Total users: {stats.get('total_users', 0)}")
-            print(f"✓ Admins: {stats.get('admins', 0)}")
-            print(f"✓ Sellers: {stats.get('sellers', 0)}")
-            print(f"✓ Customers: {stats.get('customers', 0)}")
+            print(f" Total users: {stats.get('total_users', 0)}")
+            print(f" Admins: {stats.get('admins', 0)}")
+            print(f" Sellers: {stats.get('sellers', 0)}")
+            print(f" Customers: {stats.get('customers', 0)}")
             db.disconnect()
             return True
         else:
-            print("✗ Failed to get statistics")
+            print(" Failed to get statistics")
             db.disconnect()
             return False
             
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -116,16 +116,16 @@ def test_analytics():
         activity = analytics.get_market_activity(days=30)
         
         if activity:
-            print(f"✓ Found activity for {len(activity)} market(s)")
+            print(f" Found activity for {len(activity)} market(s)")
             db.disconnect()
             return True
         else:
-            print("⚠ No market activity data (this is OK for new installation)")
+            print(" No market activity data (this is OK for new installation)")
             db.disconnect()
             return True
             
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -146,17 +146,17 @@ def test_exporter():
         missing = exporter.check_dependencies()
         
         if not missing:
-            print("✓ All export dependencies installed!")
+            print(" All export dependencies installed!")
             db.disconnect()
             return True
         else:
-            print(f"⚠ Missing dependencies: {', '.join(missing)}")
+            print(f" Missing dependencies: {', '.join(missing)}")
             print("  Install with: pip install " + " ".join(missing))
             db.disconnect()
             return True  # Not a critical failure
             
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -180,22 +180,22 @@ def test_permissions():
         # Test admin permissions
         assert Permissions.is_super_admin(admin), "Admin check failed"
         assert Permissions.can_manage_users(admin), "Admin manage users failed"
-        print("✓ Admin permissions working")
+        print(" Admin permissions working")
         
         # Test seller permissions
         assert Permissions.is_seller(seller), "Seller check failed"
         assert Permissions.can_manage_own_products(seller), "Seller manage products failed"
-        print("✓ Seller permissions working")
+        print(" Seller permissions working")
         
         # Test customer permissions
         assert Permissions.is_customer(customer), "Customer check failed"
         assert Permissions.can_place_orders(customer), "Customer place orders failed"
-        print("✓ Customer permissions working")
+        print(" Customer permissions working")
         
         return True
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f" Error: {e}")
         return False
 
 
@@ -222,7 +222,7 @@ def main():
             result = test_func()
             results.append((name, result))
         except Exception as e:
-            print(f"\n✗ Test '{name}' crashed: {e}")
+            print(f"\n Test '{name}' crashed: {e}")
             results.append((name, False))
     
     # Summary
@@ -234,20 +234,20 @@ def main():
     total = len(results)
     
     for name, result in results:
-        status = "✓ PASS" if result else "✗ FAIL"
+        status = " PASS" if result else "✗ FAIL"
         print(f"{status} - {name}")
     
     print(f"\n{passed}/{total} tests passed")
     
     if passed == total:
-        print("\n🎉 All tests passed! Your system is ready to use!")
+        print("\n All tests passed! Your system is ready to use!")
         print("\nStart the application with:")
         print("  python main_enhanced.py")
         print("\nDefault login:")
         print("  Username: admin")
         print("  Password: admin123")
     else:
-        print("\n⚠ Some tests failed. Please check the errors above.")
+        print("\n Some tests failed. Please check the errors above.")
     
     print("=" * 60)
 

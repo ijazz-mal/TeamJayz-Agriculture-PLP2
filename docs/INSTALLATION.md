@@ -1,6 +1,6 @@
 # Installation and Setup Guide
 
-## 🚀 Quick Start
+## Quick Start
 
 Follow these steps to set up the enhanced Market Price Tracker with all new features.
 
@@ -11,13 +11,14 @@ pip install -r requirements.txt
 ```
 
 This will install:
-- ✅ mysql-connector-python (Database)
-- ✅ bcrypt (Password security)
-- ✅ pandas (Data analysis)
-- ✅ matplotlib (Charts)
-- ✅ numpy (Numerical operations)
-- ✅ reportlab (PDF generation)
-- ✅ tabulate (Table formatting)
+
+- mysql-connector-python (Database)
+- bcrypt (Password security)
+- pandas (Data analysis)
+- matplotlib (Charts)
+- numpy (Numerical operations)
+- reportlab (PDF generation)
+- tabulate (Table formatting)
 
 ### Step 2: Configure Database
 
@@ -41,16 +42,18 @@ python scripts/run_migrations.py
 ```
 
 This will create:
-- ✅ Users and authentication tables
-- ✅ Orders and order items tables
-- ✅ Enhanced markets and products tables
-- ✅ Analytics tables
-- ✅ Notifications system
-- ✅ Default admin account
+
+- Users and authentication tables
+- Orders and order items tables
+- Enhanced markets and products tables
+- Analytics tables
+- Notifications system
+- Default admin account
 
 ### Step 4: Login as Admin
 
 Default credentials (change immediately!):
+
 - **Username**: `admin`
 - **Email**: `admin@marketpricetracker.com`
 - **Password**: `admin123`
@@ -63,18 +66,20 @@ Run the main application:
 python main.py
 ```
 
-## 📚 What's New?
+## What's New?
 
 ### 1. **Three User Roles**
 
-#### 🔑 Super Admin
+#### Super Admin
+
 - Manage all users
 - Approve seller registrations
 - Full CRUD on all data
 - View system-wide analytics
 - Generate reports for any market/product
 
-#### 🏪 Sellers/Markets
+#### Sellers/Markets
+
 - Register and await approval
 - Create and manage own market
 - Add/edit/delete own products
@@ -82,7 +87,8 @@ python main.py
 - View and manage orders
 - Export own market analytics
 
-#### 👤 Customers
+#### Customers
+
 - Browse products and prices
 - Compare prices across markets
 - Place orders
@@ -93,44 +99,48 @@ python main.py
 ### 2. **Order Management**
 
 Customers can:
+
 - Add products to orders
 - Specify delivery address and phone
 - Add notes for sellers
 - Track order status
 
 Sellers can:
+
 - View incoming orders
 - Update order status
 - Process orders
 
 Order Status Flow:
+
 ```
 pending → confirmed → processing → ready → completed
 ```
 
 ### 3. **Advanced Analytics**
 
-- 📊 **Price Trends**: See how prices change over time
-- 📈 **Market Comparison**: Compare prices across markets
-- 📉 **Volatility Analysis**: Find products with biggest price swings
-- 🔄 **Seasonal Patterns**: Identify seasonal price changes
-- 📌 **Market Activity**: Track market activity levels
+- **Price Trends**: See how prices change over time
+- **Market Comparison**: Compare prices across markets
+- **Volatility Analysis**: Find products with biggest price swings
+- **Seasonal Patterns**: Identify seasonal price changes
+- **Market Activity**: Track market activity levels
 
 ### 4. **Professional Reports**
 
 Generate:
-- 📄 **PDF Reports** with charts and statistics
-- 📊 **Excel Files** for data analysis
-- 📋 **CSV Exports** for raw data
 
-## 🔐 Security Features
+- **PDF Reports** with charts and statistics
+- **Excel Files** for data analysis
+- **CSV Exports** for raw data
+
+## Security Features
 
 1. **Password Hashing**: bcrypt with salt
 2. **Session Management**: 7-day expiring sessions
 3. **Role-based Access**: Enforced permissions
 4. **Status Management**: active, pending, suspended, deleted
 
-## 📁 New Files Created
+## New Files Created
 
 ```
 market_price_tracker/
@@ -149,7 +159,7 @@ market_price_tracker/
 └── INSTALLATION.md (this file)
 ```
 
-## 🧪 Testing the Features
+## Testing the Features
 
 ### Test as Super Admin
 
@@ -178,7 +188,7 @@ market_price_tracker/
 5. View order history
 6. Export price trend reports
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Migration Fails
 
@@ -191,7 +201,8 @@ market_price_tracker/
 ### Cannot Login
 
 **Issue**: Invalid credentials
-**Solution**: 
+**Solution**:
+
 - Check if migration created admin account
 - Verify user status is 'active'
 - Check password (case-sensitive)
@@ -199,7 +210,8 @@ market_price_tracker/
 ### Charts Not Generating
 
 **Issue**: matplotlib not installed
-**Solution**: 
+**Solution**:
+
 ```bash
 pip install matplotlib numpy
 ```
@@ -208,11 +220,12 @@ pip install matplotlib numpy
 
 **Issue**: reportlab not installed
 **Solution**:
+
 ```bash
 pip install reportlab
 ```
 
-## 📊 Sample Usage Scenarios
+## Sample Usage Scenarios
 
 ### Scenario 1: New Market Owner
 
@@ -241,7 +254,7 @@ pip install reportlab
 5. Generate market comparison reports
 6. Monitor market activity
 
-## 🎯 Next Development Steps
+## Next Development Steps
 
 The following features are planned but not yet implemented:
 
@@ -254,14 +267,14 @@ The following features are planned but not yet implemented:
 7. **Image Upload**: Product images
 8. **Reviews**: Customer reviews and ratings
 
-## 📞 Need Help?
+## Need Help?
 
 1. Read `NEW_FEATURES.md` for detailed feature documentation
 2. Check `README.md` for basic usage
 3. Review `QUICKSTART.md` for initial setup
 4. Examine code comments in source files
 
-## ✅ Checklist
+## Checklist
 
 After installation, verify:
 
@@ -274,6 +287,6 @@ After installation, verify:
 - [ ] Placed a test order
 - [ ] Generated a test report
 
-## 🎉 You're Ready!
+## You're Ready!
 
 Start exploring the enhanced Market Price Tracker with authentication, orders, and analytics!
