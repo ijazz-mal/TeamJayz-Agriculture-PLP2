@@ -1,10 +1,10 @@
 # Quick Start Guide - Enhanced Features
 
-## 🎉 All Features Implemented!
+## All Features Implemented!
 
 Congratulations! All the new features have been successfully implemented:
 
-### ✅ Completed Tasks
+### Completed Tasks
 
 1. **Database Schema** - Users, sessions, orders, and enhanced tables
 2. **Authentication System** - Login, signup, session management
@@ -15,7 +15,7 @@ Congratulations! All the new features have been successfully implemented:
 7. **Enhanced UI** - Role-based menus for all user types
 8. **User Management** - Complete CRUD for admins
 
-## 🚀 How to Run the Enhanced Application
+## How to Run the Enhanced Application
 
 ### Option 1: Run the Enhanced Version
 
@@ -24,6 +24,7 @@ python main_enhanced.py
 ```
 
 This is the **full-featured version** with:
+
 - Authentication & login
 - Role-based dashboards
 - Order management
@@ -38,19 +39,21 @@ python main.py
 
 This is the **original simple version** (no authentication required).
 
-## 👤 Default Login Credentials
+## Default Login Credentials
 
 After running migrations, use these credentials:
 
 **Super Admin:**
+
 - Username: `admin`
 - Password: `admin123`
 
-⚠️ **IMPORTANT**: Change this password immediately after first login!
+**IMPORTANT**: Change this password immediately after first login!
 
-## 📋 What You Can Do
+## What You Can Do
 
 ### As Super Admin:
+
 1. Login with admin credentials
 2. Approve pending seller registrations
 3. Manage all users (view, suspend, activate, delete)
@@ -59,6 +62,7 @@ After running migrations, use these credentials:
 6. Generate comprehensive reports
 
 ### As Seller:
+
 1. Register as seller (will be "pending" status)
 2. Wait for admin approval
 3. Create your market
@@ -68,6 +72,7 @@ After running migrations, use these credentials:
 7. Generate market analytics reports
 
 ### As Customer:
+
 1. Register as customer (active immediately)
 2. Browse all products and prices
 3. Compare prices across markets
@@ -76,7 +81,7 @@ After running migrations, use these credentials:
 6. View price trends
 7. Export reports for analysis
 
-## 🧪 Testing the System
+## Testing the System
 
 ### Test Workflow 1: Complete User Journey
 
@@ -135,9 +140,10 @@ python main_enhanced.py
 # 5. Export to CSV
 ```
 
-## 📁 Files Created
+## Files Created
 
 ### Core Application Files:
+
 - `main_enhanced.py` - **Enhanced application entry point**
 - `src/auth.py` - Authentication manager
 - `src/permissions.py` - Role-based access control
@@ -148,39 +154,48 @@ python main_enhanced.py
 - `src/ui_enhanced.py` - Role-based UI menus
 
 ### Database & Scripts:
+
 - `migrations/001_add_auth_and_orders.sql` - Database schema
 - `scripts/run_migrations.py` - Migration runner
 
 ### Documentation:
+
 - `NEW_FEATURES.md` - Detailed feature documentation
 - `INSTALLATION.md` - Installation guide
 - `DEVELOPER_GUIDE.md` - API reference
 - `GETTING_STARTED.md` - This file!
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Permission denied" errors
+
 **Solution**: Make sure you're logged in and have the right role for the action.
 
 ### Issue: "No data available" in analytics
+
 **Solution**: Add some price data first. The analytics need historical data to work.
 
 ### Issue: Charts not generating
+
 **Solution**: Make sure matplotlib is installed:
+
 ```bash
 pip install matplotlib numpy
 ```
 
 ### Issue: PDF reports fail
+
 **Solution**: Make sure reportlab is installed:
+
 ```bash
 pip install reportlab
 ```
 
 ### Issue: Seller can't login after registration
+
 **Solution**: Admin must approve the seller first. Login as admin and approve from User Management menu.
 
-## 🎯 Next Steps
+## Next Steps
 
 Now that everything is set up:
 
@@ -195,21 +210,25 @@ Now that everything is set up:
    - Reviews and ratings
 4. **Deploy to production** when ready
 
-## 📊 Example Use Cases
+## Example Use Cases
 
 ### Use Case 1: Daily Price Updates
+
 Sellers login each morning to update prices for their products, ensuring customers always see current prices.
 
 ### Use Case 2: Price Comparison Shopping
+
 Customers compare prices across different markets before deciding where to buy, finding the best deals.
 
 ### Use Case 3: Market Analysis
+
 Both sellers and customers generate reports to understand price trends and make informed decisions.
 
 ### Use Case 4: Order Management
+
 Customers place orders online, sellers receive and process them efficiently with status tracking.
 
-## 💡 Tips
+## Tips
 
 1. **Start with Sample Data**: The system includes sample data to help you test features.
 
@@ -221,29 +240,14 @@ Customers place orders online, sellers receive and process them efficiently with
 
 5. **Backup Regularly**: Export data to Excel/CSV regularly for backups.
 
-## 🎓 Learning Resources
+## Learning Resources
 
 - **Python Documentation**: https://docs.python.org/3/
 - **MySQL Documentation**: https://dev.mysql.com/doc/
 - **Matplotlib Guides**: https://matplotlib.org/stable/tutorials/
 - **ReportLab User Guide**: https://www.reportlab.com/docs/
 
-## ✨ Features Summary
-
-| Feature | Super Admin | Seller | Customer |
-|---------|-------------|--------|----------|
-| User Management | ✅ | ❌ | ❌ |
-| Approve Sellers | ✅ | ❌ | ❌ |
-| Create Market | ✅ | ✅ | ❌ |
-| Add Products | ✅ | ✅ | ❌ |
-| Update Prices | ✅ | ✅ | ❌ |
-| Place Orders | ✅ | ❌ | ✅ |
-| Manage Orders | ✅ | ✅ (own) | ✅ (own) |
-| View Analytics | ✅ | ✅ | ✅ |
-| Generate Reports | ✅ | ✅ | ✅ |
-| Export Data | ✅ | ✅ | ✅ |
-
-## 🎉 You're All Set!
+## You're All Set!
 
 Everything is implemented and ready to use. Start the enhanced application and explore all the new features!
 
@@ -251,4 +255,4 @@ Everything is implemented and ready to use. Start the enhanced application and e
 python main_enhanced.py
 ```
 
-**Happy tracking!** 🚀
+**Happy tracking!**
